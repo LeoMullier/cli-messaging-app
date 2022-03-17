@@ -15,41 +15,34 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
-public class devoir1_reception extends Thread{
+public class devoir1_envoi extends Thread{
 	
 	private Socket client;
-	private String nom;
+	private int id;
 	
 	
-	public devoir1_reception(Socket client, String nom) {
+	public devoir1_envoi(Socket client, int id) {
 		this.client = client;
-		this.nom = nom;
+		this.id = id;
 	}
 	
-
+	
 	//@Override
 	public void run() {
 		
 		try {
 			
 			// Initialisations
-			byte byteElement[] = new byte[20];
-			String chaineRecue;
-			InputStream inputFromServer=client.getInputStream();
+			OutputStream outToServer = client.getOutputStream();
 			
 			while(true) {
 				
-				// Lecture du contenu de InputStream
-				inputFromServer.read(byteElement);
-				chaineRecue = new String(byteElement);
+				// Lecture du contenu tapé
+				Scanner sc = new Scanner(System.in);
+				String message = sc.next();
 				
-				// Affichage de l'élément reçu si on n'en est pas l'auteur
-				if(!(chaineRecue.startsWith(nom))) {
-					
-					System.out.println(chaineRecue);
-				}
-				
-				byteElement=new byte[20];
+				// Envoi du message au serveur
+				outToServer.write((id+":"+message).getBytes());
 			}
 		
 		// Gestion de l'exception
