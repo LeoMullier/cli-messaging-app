@@ -1,8 +1,9 @@
-// Déclaration du package
+// DÃ©claration du package
 package utc;
 
+
+// Importation des bibliothÃ¨ques
 import java.io.DataInput;
-// Importation des bibliothèques
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -18,12 +19,15 @@ import java.util.logging.Logger;
 
 public class devoir1_reception extends Thread{
 	
+	
 	private Socket client;
 	private String nom;
 	private DataInputStream inFromServer;
 	
 	
 	public devoir1_reception(Socket client, String nom, DataInputStream inFromServer) {
+		
+		
 		this.client = client;
 		this.nom = nom;
 		this.inFromServer = inFromServer;
@@ -33,27 +37,36 @@ public class devoir1_reception extends Thread{
 	//@Override
 	public void run() {
 		
+		
 		try {
+			
 			
 			// Initialisations
 			String chaineRecue;
 			//System.out.println("dans le thread reception");
 			
+			
 			while(true) {
+				
 				
 				// Lecture du contenu de InputStream
 				chaineRecue = inFromServer.readUTF();
 				
-				// Affichage de l'élément reçu si on n'en est pas l'auteur
-				//if(!(chaineRecue.startsWith(nom))) {
+				
+				// Affichage de l'Ã©lÃ©ment reÃ§u si on n'en est pas l'auteur
+				if(!(chaineRecue.startsWith(nom))) {
+					
 					
 					System.out.println(chaineRecue);
 					System.out.println(" ");
-				//}
+				}
 			}
 		
+			
 		// Gestion de l'exception
 		} catch(IOException ex) {
+			
+			
 			Logger.getLogger(devoir1_reception.class.getName()).log(Level.SEVERE, null, ex);
 		}
 	}

@@ -1,8 +1,8 @@
-// D�claration du package
+// Déclaration du package
 package utc;
 
 
-// Importation des bibliothèques
+// Importation des bibliothÃ¨ques
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -18,12 +18,15 @@ import java.util.logging.Logger;
 
 public class devoir1_envoi extends Thread{
 	
+	
 	private Socket socClient;
 	private int id;
 	private DataOutputStream outToServer;
 	
 	
 	public devoir1_envoi(Socket socClient, int id, DataOutputStream outToServer) {
+		
+		
 		this.socClient = socClient;
 		this.id = id;
 		this.outToServer = outToServer;
@@ -33,7 +36,9 @@ public class devoir1_envoi extends Thread{
 	//@Override
 	public void run() {
 		
+		
 		try {
+			
 			
 			// Initialisations
 			//DataOutputStream outToServer = new DataOutputStream(socClient.getOutputStream());
@@ -43,7 +48,8 @@ public class devoir1_envoi extends Thread{
 			while (true)
 			{
 				
-				// Lecture du contenu tap�
+				
+				// Lecture du contenu tapé
 				Scanner sc = new Scanner(System.in);
 				String message = sc.next();
 				
@@ -56,6 +62,7 @@ public class devoir1_envoi extends Thread{
 		// Gestion de l'exception
 		} catch(IOException ex)
 		{
+			
 			
 			Logger.getLogger(devoir1_reception.class.getName()).log(Level.SEVERE, null, ex);
 		}

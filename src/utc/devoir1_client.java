@@ -1,8 +1,8 @@
-// DÃ©claration du package
+// DÃƒÂ©claration du package
 package utc;
 
 
-// Importation des bibliothÃ¨ques
+// Importation des bibliothÃƒÂ¨ques
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -22,8 +22,10 @@ import java.nio.ByteBuffer;
 
 public class devoir1_client {
 	
+	
 	public static void main(String[] args) {
 	
+		
 		try {
 			
 			
@@ -54,7 +56,7 @@ public class devoir1_client {
 			*/
 			
 			
-			// Déclaration du pseudo pour créer un nouvel utilisateur
+			// DÃ©claration du pseudo pour crÃ©er un nouvel utilisateur
 			while(!(chaineRecue.startsWith("pseudo_valide")))
 			{
 				
@@ -69,18 +71,18 @@ public class devoir1_client {
 				outToServer.flush();
 				
 				
-				// Réception de la validation ou non du pseudo de la part du server
+				// RÃ©ception de la validation ou non du pseudo de la part du server
 				chaineRecue = inFromServer.readUTF();
 				//System.out.println(">>> " + chaineRecue);
 			}
 			
 			
-			// Récupération de l'identifiant unique généré par le server
+			// RÃ©cupÃ©ration de l'identifiant unique gÃ©nÃ©rÃ© par le server
 			int id = inFromServer.readInt();
 			//System.out.println(">>> " + id);
 			
 			
-			// Message de bienvenue à l'utilisateur
+			// Message de bienvenue Ã  l'utilisateur
 			System.out.println("Bienvenue dans la discussion " + nom + " !");
 			System.out.println(" ");
 			
@@ -104,8 +106,11 @@ public class devoir1_client {
 			//nom = sc.next();
 			//socClient.close();
 		
+			
 		// Gestion de l'exception
 		} catch (IOException ex) {
+			
+			
 			Logger.getLogger(devoir1_client.class.getName()).log(Level.SEVERE, null, ex);
 		}
 	}
