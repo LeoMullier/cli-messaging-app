@@ -51,7 +51,7 @@ public class devoir1_envoi extends Thread{
 				
 				// Lecture du contenu tapé
 				Scanner sc = new Scanner(System.in);
-				String message = sc.next();
+				String message = sc.nextLine();
 				
 				
 				// Envoi du message au serveur
